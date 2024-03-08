@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://brfago4fxe7fp"]
+
+[ext_resource type="PackedScene" uid="uid://ofgyhkajy7qp" path="res://player.tscn" id="1_i5sts"]
+[ext_resource type="Script" path="res://test_scene.gd" id="1_j5fym"]
+[ext_resource type="PackedScene" uid="uid://bdtp2suf5do83" path="res://enemy_one.tscn" id="2_vt0f1"]
+[ext_resource type="PackedScene" uid="uid://co58fv0qwjltu" path="res://hud.tscn" id="4_dnlo1"]
+
+[sub_resource type="Curve2D" id="Curve2D_j2pfl"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1239, 19, 0, 0, 0, 0, 1240, 614)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hy85n"]
+size = Vector2(117, 834.5)
+
+[node name="TestScene" type="Node"]
+script = ExtResource("1_j5fym")
+enemy_one = ExtResource("2_vt0f1")
+
+[node name="Player" parent="." instance=ExtResource("1_i5sts")]
+position = Vector2(56, 313)
+
+[node name="EnemyOneSpawnTimer" type="Timer" parent="."]
+
+[node name="EnemySpawnPath" type="Path2D" parent="."]
+position = Vector2(-53, 9)
+curve = SubResource("Curve2D_j2pfl")
+
+[node name="EnemySpawnLocation" type="PathFollow2D" parent="EnemySpawnPath"]
+position = Vector2(1239, 19)
+rotation = 1.5708
+rotates = false
+
+[node name="Button" type="Button" parent="."]
+offset_left = 788.0
+offset_top = 601.0
+offset_right = 902.0
+offset_bottom = 632.0
+text = "Head to Store"
+
+[node name="HUD" parent="." instance=ExtResource("4_dnlo1")]
+
+[node name="StageTimer" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="BaseArea" type="Area2D" parent="."]
+position = Vector2(-171, 371)
+
+[node name="BaseCollisionShape2D" type="CollisionShape2D" parent="BaseArea"]
+position = Vector2(41, -51)
+shape = SubResource("RectangleShape2D_hy85n")
+
+[connection signal="timeout" from="EnemyOneSpawnTimer" to="." method="_on_enemy_one_spawn_timer_timeout"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="StageTimer" to="." method="_on_stage_timer_timeout"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
+[connection signal="body_entered" from="BaseArea" to="." method="_on_base_area_body_entered"]

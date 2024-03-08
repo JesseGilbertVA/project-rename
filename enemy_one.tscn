@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://bdtp2suf5do83"]
+
+[ext_resource type="Script" path="res://enemy_one.gd" id="1_4eu2d"]
+[ext_resource type="Texture2D" uid="uid://c2c31kf8ydhp" path="res://newEnemyOne.png" id="2_1s7tw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_52tkt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1s7tw")
+}],
+"loop": true,
+"name": &"alive",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1s7tw")
+}],
+"loop": false,
+"name": &"death",
+"speed": 11.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ibqwj"]
+size = Vector2(119, 85)
+
+[node name="EnemyOne" type="RigidBody2D"]
+gravity_scale = 1.66533e-16
+script = ExtResource("1_4eu2d")
+metadata/_edit_group_ = true
+
+[node name="EnemyOneAnimatedSprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_52tkt")
+animation = &"death"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.5, 1.5)
+shape = SubResource("RectangleShape2D_ibqwj")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
