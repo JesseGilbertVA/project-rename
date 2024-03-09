@@ -9,7 +9,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	$Health.text = "Health: " + str(globals.player_health)
+	$Currency.text = "Currency: " + str(globals.player_currency)
 
 
 func _on_button_pressed():
@@ -24,7 +25,22 @@ func _on_button_2_pressed():
 	print("Playern now has: " + str(globals.player_currency))
 
 
-
-func _on_button_3_pressed():
+func _on_next_stage_pressed():
 	print("Transition back to level stage")
 	get_tree().change_scene_to_file("res://test_scene.tscn")
+
+
+func _on_death_to_all_pressed():
+	if globals.player_currency >= 5000 and globals.death_to_all == false:
+		globals.death_to_all = true
+		globals.player_currency -= 5000
+		print("what have you become...")
+	
+
+
+func _on_increase_max_hp_pressed():
+	if globals.player_currency >= 2000:
+		globals.max_player_health += 1
+		globals.player_currency -= 2000
+		globals.player_health = globals.max_player_health
+		

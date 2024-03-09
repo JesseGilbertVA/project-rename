@@ -2,6 +2,8 @@ extends Node
 
 var player_currency = 0
 var player_health = 3
+var max_player_health = 3
+var death_to_all = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

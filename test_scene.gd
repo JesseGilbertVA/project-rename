@@ -44,3 +44,4 @@ func _on_stage_timer_timeout():
 
 func _on_base_area_body_entered(body):
 	print("Base area entered.")
+	globals.player_health -= 1

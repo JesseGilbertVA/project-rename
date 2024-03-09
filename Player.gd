@@ -34,14 +34,20 @@ func _process(delta):
 	#position = position.clamp(Vector2.ZERO, screen_size) #SAVING THIS OLD LINE JUST IN CASE
 	
 	#base laser
-	if Input.is_action_pressed("shoot") and cooldown <= 0:
-		shoot()
-		cooldown = 0.3
+	if globals.death_to_all == true:
+		if Input.is_action_pressed("shoot"):
+			shoot()
+	else:
+		if Input.is_action_pressed("shoot") and cooldown <= 0:
+			shoot()
+			cooldown = 0.3
 	
 
 func _on_body_entered(body):
 	print('player hit')
 	player_hit.emit()
+	globals.player_health -= 1
+	body.queue_free()
 
 # lowercase b is a fucking horrible name for this variable, but basically all we are doing is declaring that as the bullet we are creating
 func shoot():
