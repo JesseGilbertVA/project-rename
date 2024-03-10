@@ -11,20 +11,10 @@ func _ready():
 func _process(delta):
 	pass
 
-
-
-func _on_body_entered(body):
-	print('enemy body entered')
-
-
-func _on_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
-	print('new enemy body enters')
-	
-	
 func i_am_test_function():
 	print('success!')
 
-func play_animation():
+func hit_by_laser():
 	set_physics_process(false)
 	$EnemyOneAnimatedSprite.play("death")
 	await get_tree().create_timer(0.25).timeout
@@ -32,4 +22,6 @@ func play_animation():
 	print('Player currency: ' + str(globals.player_currency))
 	queue_free()
 	
-	
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	queue_free()

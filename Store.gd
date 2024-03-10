@@ -26,8 +26,15 @@ func _on_button_2_pressed():
 
 
 func _on_next_stage_pressed():
-	print("Transition back to level stage")
-	get_tree().change_scene_to_file("res://test_scene.tscn")
+	if globals.stage_level >= 1 and globals.stage_level <= 3:
+		print('Proceeding to next easy level')
+		get_tree().change_scene_to_file("res://test_scene.tscn")
+	if globals.stage_level >= 4 and globals.stage_level <= 6:
+		print('Proceeding to next medium level')
+		get_tree().change_scene_to_file("res://test_scene.tscn")
+	if globals.stage_level >= 7:
+		print('Proceeding to next hard level')
+		get_tree().change_scene_to_file("res://test_scene.tscn")
 
 
 func _on_death_to_all_pressed():

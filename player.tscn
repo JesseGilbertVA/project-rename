@@ -2,22 +2,23 @@
 
 [ext_resource type="Script" path="res://Player.gd" id="1_eiyoc"]
 [ext_resource type="PackedScene" uid="uid://c8gqagxs6ltvt" path="res://player_laser.tscn" id="2_ga1q8"]
-[ext_resource type="Texture2D" uid="uid://b2jk0ad5kwlvv" path="res://player.png" id="3_hj72m"]
+[ext_resource type="Texture2D" uid="uid://daeeix3q1oqoy" path="res://Sprite-0003edit.png" id="3_1u03q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vjqqi"]
-size = Vector2(236, 168)
+size = Vector2(116, 52)
 
 [node name="Player" type="Area2D"]
-scale = Vector2(0.5, 0.5)
+collision_mask = 3
 script = ExtResource("1_eiyoc")
 Bullet = ExtResource("2_ga1q8")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("3_hj72m")
+scale = Vector2(2, 2)
+texture = ExtResource("3_1u03q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(6, 4)
+position = Vector2(6, 2)
 shape = SubResource("RectangleShape2D_vjqqi")
 
 [node name="LaserSpawn" type="Marker2D" parent="."]

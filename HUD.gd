@@ -10,10 +10,12 @@ func _ready():
 func _process(delta):
 	$Health.text = "Health: " + str(globals.player_health)
 	$Currency.text = "Currency: " + str(globals.player_currency)
+	$CurrentStage.text = "Current Stage: " + str(globals.stage_level)
 
 
 func _on_get_ready_timer_timeout():
 	$GetReady.text = ""
 
+#This function is called in each gameplay scene's _process function
 func update_timer(time_remaining):
-	$TimeRemaining.text = "Time Remaining: " + str(time_remaining)
+	$TimeRemaining.text = "Time Remaining: " + str(time_remaining) 

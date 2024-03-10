@@ -16,6 +16,6 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 #this function is such shit my god
 func _on_body_entered(body):
 	print('laser entered body')
-	body.play_animation()
+	body.hit_by_laser()
 	queue_free()
 	

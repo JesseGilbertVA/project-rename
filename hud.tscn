@@ -44,4 +44,11 @@ offset_right = 1065.0
 offset_bottom = 623.0
 text = "Time Remaining: "
 
+[node name="CurrentStage" type="Label" parent="."]
+offset_left = 932.0
+offset_top = 578.0
+offset_right = 1065.0
+offset_bottom = 601.0
+text = "Current Stage: "
+
 [connection signal="timeout" from="GetReadyTimer" to="." method="_on_get_ready_timer_timeout"]

@@ -1,6 +1,7 @@
 extends Node
 
 @export var enemy_one: PackedScene
+@export var asteroid_scene: PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -33,11 +34,13 @@ func _on_button_pressed():
 func _on_start_timer_timeout():
 	$EnemyOneSpawnTimer.start()
 	$StageTimer.start()
+	$AsteroidTimer.start()
 
 
 func _on_stage_timer_timeout():
 	get_tree().paused = true
 	$HUD/GetReady.text = "Complete!"
+	globals.stage_level += 1
 	await get_tree().create_timer(2.0).timeout
 	get_tree().change_scene_to_file("res://store.tscn")
 
@@ -45,3 +48,15 @@ func _on_stage_timer_timeout():
 func _on_base_area_body_entered(body):
 	print("Base area entered.")
 	globals.player_health -= 1
+
+
+func _on_asteroid_timer_timeout():
+	var asteroid = asteroid_scene.instantiate()
+	var asteroid_spawn_location = $EnemySpawnPath/EnemySpawnLocation
+	asteroid_spawn_location.progress_ratio = randf()
+	var direction = asteroid_spawn_location.rotation + PI / 2 #I still don't really understand radians fully, but this worked so?
+	asteroid.position = asteroid_spawn_location.position
+	var velocity = Vector2(1250.0, 0.0)
+	asteroid.linear_velocity = velocity.rotated(direction) #I dont even know what this line does fully, but it makes the bad guys move forward so
+
+	add_child(asteroid)
