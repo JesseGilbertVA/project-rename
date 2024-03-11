@@ -61,7 +61,7 @@ offset_top = 115.0
 offset_right = 203.0
 offset_bottom = 169.0
 text = "Death To All Who Enter
-Cost: 5000"
+Cost: 15000"
 
 [node name="RestoreHP" type="Button" parent="."]
 offset_left = 16.0
@@ -85,8 +85,18 @@ offset_right = 73.0
 offset_bottom = 624.0
 text = "Health: "
 
+[node name="TriLaser" type="Button" parent="."]
+offset_left = 16.0
+offset_top = 334.0
+offset_right = 203.0
+offset_bottom = 388.0
+text = "Tri Laser
+Cost: 5000"
+
 [connection signal="pressed" from="IncreaseMaxHP" to="." method="_on_increase_max_hp_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="NextStage" to="." method="_on_next_stage_pressed"]
 [connection signal="pressed" from="DeathToAll" to="." method="_on_death_to_all_pressed"]
+[connection signal="pressed" from="RestoreHP" to="." method="_on_restore_hp_pressed"]
+[connection signal="pressed" from="TriLaser" to="." method="_on_tri_laser_pressed"]

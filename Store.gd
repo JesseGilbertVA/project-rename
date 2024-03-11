@@ -28,22 +28,21 @@ func _on_button_2_pressed():
 func _on_next_stage_pressed():
 	if globals.stage_level >= 1 and globals.stage_level <= 3:
 		print('Proceeding to next easy level')
-		get_tree().change_scene_to_file("res://test_scene.tscn")
+		get_tree().change_scene_to_file("res://Level Scenes/Easy/easy_scene.tscn")
 	if globals.stage_level >= 4 and globals.stage_level <= 6:
 		print('Proceeding to next medium level')
-		get_tree().change_scene_to_file("res://test_scene.tscn")
+		get_tree().change_scene_to_file("res://Level Scenes/Medium/medium_scene.tscn")
 	if globals.stage_level >= 7:
 		print('Proceeding to next hard level')
 		get_tree().change_scene_to_file("res://test_scene.tscn")
 
 
 func _on_death_to_all_pressed():
-	if globals.player_currency >= 5000 and globals.death_to_all == false:
-		globals.death_to_all = true
-		globals.player_currency -= 5000
+	if globals.player_currency >= 15000 and globals.weapon_type != 3:
+		globals.weapon_type = 3
+		globals.player_currency -= 15000
 		print("what have you become...")
 	
-
 
 func _on_increase_max_hp_pressed():
 	if globals.player_currency >= 2000:
@@ -51,3 +50,15 @@ func _on_increase_max_hp_pressed():
 		globals.player_currency -= 2000
 		globals.player_health = globals.max_player_health
 		
+
+
+func _on_restore_hp_pressed():
+	if globals.player_currency >= 500 and globals.player_health < globals.max_player_health:
+		globals.player_health += 1
+		globals.player_currency -= 500
+
+
+func _on_tri_laser_pressed():
+	if globals.player_currency >= 5000 and globals.weapon_type != 2:
+		globals.weapon_type = 2
+		globals.player_currency -= 5000

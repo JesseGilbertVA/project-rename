@@ -10,6 +10,7 @@ radius = 43.0
 collision_layer = 2
 gravity_scale = 1.66533e-16
 script = ExtResource("1_y8kaq")
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 6)
@@ -19,3 +20,5 @@ texture = ExtResource("1_t4wot")
 shape = SubResource("CircleShape2D_7fqd5")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -1,0 +1,69 @@
+[gd_scene load_steps=9 format=3 uid="uid://djllt5yunlln8"]
+
+[ext_resource type="Script" path="res://Level Scenes/Medium/medium_scene.gd" id="1_mjjqo"]
+[ext_resource type="PackedScene" uid="uid://bdtp2suf5do83" path="res://enemy_one.tscn" id="2_dphe3"]
+[ext_resource type="PackedScene" uid="uid://coclpmmj4jpro" path="res://asteroid.tscn" id="3_ije6b"]
+[ext_resource type="PackedScene" uid="uid://cqnnho8sfmjo4" path="res://enemy_two.tscn" id="4_m84gf"]
+[ext_resource type="PackedScene" uid="uid://ofgyhkajy7qp" path="res://player.tscn" id="5_pf52t"]
+[ext_resource type="PackedScene" uid="uid://co58fv0qwjltu" path="res://hud.tscn" id="6_uanhh"]
+
+[sub_resource type="Curve2D" id="Curve2D_j2pfl"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1239, 19, 0, 0, 0, 0, 1240, 614)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hy85n"]
+size = Vector2(117, 834.5)
+
+[node name="MediumScene" type="Node"]
+script = ExtResource("1_mjjqo")
+enemy_one = ExtResource("2_dphe3")
+asteroid_scene = ExtResource("3_ije6b")
+enemy_two_scene = ExtResource("4_m84gf")
+
+[node name="Player" parent="." instance=ExtResource("5_pf52t")]
+position = Vector2(56, 313)
+
+[node name="EnemySpawnPath" type="Path2D" parent="."]
+position = Vector2(-53, 9)
+curve = SubResource("Curve2D_j2pfl")
+
+[node name="EnemySpawnLocation" type="PathFollow2D" parent="EnemySpawnPath"]
+position = Vector2(1239, 19)
+rotation = 1.5708
+rotates = false
+
+[node name="HUD" parent="." instance=ExtResource("6_uanhh")]
+
+[node name="EnemyOneSpawnTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="StageTimer" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="EnemyTwoSpawnTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="AsteroidTimer" type="Timer" parent="."]
+wait_time = 9.0
+
+[node name="BaseArea" type="Area2D" parent="."]
+position = Vector2(-171, 371)
+collision_mask = 6
+
+[node name="BaseCollisionShape2D" type="CollisionShape2D" parent="BaseArea"]
+position = Vector2(103, -51)
+shape = SubResource("RectangleShape2D_hy85n")
+
+[connection signal="timeout" from="EnemyOneSpawnTimer" to="." method="_on_enemy_one_spawn_timer_timeout"]
+[connection signal="timeout" from="StageTimer" to="." method="_on_stage_timer_timeout"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
+[connection signal="timeout" from="EnemyTwoSpawnTimer" to="." method="_on_enemy_two_spawn_timer_timeout"]
+[connection signal="timeout" from="AsteroidTimer" to="." method="_on_asteroid_timer_timeout"]
+[connection signal="body_entered" from="BaseArea" to="." method="_on_base_area_body_entered"]

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqnnho8sfmjo4"]
+
+[ext_resource type="Texture2D" uid="uid://cjt10ax42s21x" path="res://maybe_enemy_two.png" id="1_j0dgl"]
+[ext_resource type="Script" path="res://enemy_two.gd" id="1_x6kpj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0bls5"]
+size = Vector2(112, 92)
+
+[node name="EnemyTwo" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 2
+script = ExtResource("1_x6kpj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_j0dgl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemies"]]
+position = Vector2(2, -5)
+shape = SubResource("RectangleShape2D_0bls5")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]

@@ -16,8 +16,10 @@ func i_am_test_function():
 
 func hit_by_laser():
 	set_physics_process(false)
+	linear_velocity = Vector2.ZERO
+	$CollisionShape2D.set_deferred("disabled", true)
 	$EnemyOneAnimatedSprite.play("death")
-	await get_tree().create_timer(0.25).timeout
+	#await get_tree().create_timer(0.25).timeout #re-enable once we actually have an animation
 	globals.player_currency += 10
 	print('Player currency: ' + str(globals.player_currency))
 	queue_free()

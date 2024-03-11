@@ -2,6 +2,7 @@ extends Area2D
 
 @export var speed = 400
 @export var Bullet : PackedScene
+@export var TriLaser : PackedScene
 var screen_size
 var cooldown = 0.3
 
@@ -33,14 +34,18 @@ func _process(delta):
 	position.y = clamp(position.y, 30, screen_size.y - 30) #I DONT KNOW IF THIS IS THE BEST WAY TO HANDLE THIS KEEP IT IN MIND IF I NEED TO FIX IT
 	#position = position.clamp(Vector2.ZERO, screen_size) #SAVING THIS OLD LINE JUST IN CASE
 	
-	#base laser
-	if globals.death_to_all == true:
-		if Input.is_action_pressed("shoot"):
-			shoot()
-	else:
-		if Input.is_action_pressed("shoot") and cooldown <= 0:
-			shoot()
-			cooldown = 0.3
+	match globals.weapon_type:
+		1: #base laser
+			if Input.is_action_pressed("shoot") and cooldown <= 0:
+				basic_shoot()
+				cooldown = 0.3
+		2: #tri laser
+			if Input.is_action_pressed("shoot") and cooldown <= 0:
+				triple_shoot()
+				cooldown = 0.3
+		3: #death to all who enter laser
+			if Input.is_action_pressed("shoot"):
+				basic_shoot()
 	
 
 func _on_body_entered(body):
@@ -50,8 +55,20 @@ func _on_body_entered(body):
 	body.queue_free()
 
 # lowercase b is a fucking horrible name for this variable, but basically all we are doing is declaring that as the bullet we are creating
-func shoot():
+func basic_shoot():
 	var b = Bullet.instantiate()
 	owner.add_child(b) #the owner tag is crucial here so that it attaches to the main scene node and not the player node
-	b.transform = $LaserSpawn.global_transform #i dont really know what this does but it works
+	b.transform = $LaserSpawn.global_transform
 	
+func triple_shoot():
+	var b = Bullet.instantiate()
+	var b2 = Bullet.instantiate()
+	var b3 = Bullet.instantiate()
+	owner.add_child(b) #the owner tag is crucial here so that it attaches to the main scene node and not the player node
+	owner.add_child(b2)
+	owner.add_child(b3)
+	b.transform = $LaserSpawn.global_transform
+	b2.transform = $LaserSpawn.global_transform
+	b3.transform = $LaserSpawn.global_transform
+	b2.rotation = deg_to_rad(-10)
+	b3.rotation = deg_to_rad(10)

@@ -12,3 +12,7 @@ func _process(delta):
 
 func hit_by_laser():
 	pass
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	queue_free()
