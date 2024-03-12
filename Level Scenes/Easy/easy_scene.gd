@@ -15,6 +15,7 @@ func _process(delta):
 		game_over()
 
 func game_over():
+	$Player.hide()
 	get_tree().paused = true
 	$HUD/GetReady.text = "Game over! You lose!"
 	await get_tree().create_timer(3.0).timeout
@@ -58,6 +59,6 @@ func _on_enemy_two_timer_timeout():
 	enemy_spawn_location.progress_ratio = randf()
 	var direction = enemy_spawn_location.rotation + PI / 2 #I still don't really understand radians fully, but this worked so?
 	enemy.position = enemy_spawn_location.position
-	var velocity = Vector2(randf_range(350.0, 450.0), 0.0) #easy stage speed
+	var velocity = Vector2(randf_range(175.0, 225.0), 0.0) #easy stage speed
 	enemy.linear_velocity = velocity.rotated(direction)
 	add_child(enemy)

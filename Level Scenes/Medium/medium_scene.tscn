@@ -7,14 +7,14 @@
 [ext_resource type="PackedScene" uid="uid://ofgyhkajy7qp" path="res://player.tscn" id="5_pf52t"]
 [ext_resource type="PackedScene" uid="uid://co58fv0qwjltu" path="res://hud.tscn" id="6_uanhh"]
 
-[sub_resource type="Curve2D" id="Curve2D_j2pfl"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hy85n"]
+size = Vector2(117, 436)
+
+[sub_resource type="Curve2D" id="Curve2D_wn1vu"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1239, 19, 0, 0, 0, 0, 1240, 614)
+"points": PackedVector2Array(0, 0, 0, 0, 651, 12, 0, 0, 0, 0, 651, 330)
 }
 point_count = 2
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hy85n"]
-size = Vector2(117, 834.5)
 
 [node name="MediumScene" type="Node"]
 script = ExtResource("1_mjjqo")
@@ -23,16 +23,7 @@ asteroid_scene = ExtResource("3_ije6b")
 enemy_two_scene = ExtResource("4_m84gf")
 
 [node name="Player" parent="." instance=ExtResource("5_pf52t")]
-position = Vector2(56, 313)
-
-[node name="EnemySpawnPath" type="Path2D" parent="."]
-position = Vector2(-53, 9)
-curve = SubResource("Curve2D_j2pfl")
-
-[node name="EnemySpawnLocation" type="PathFollow2D" parent="EnemySpawnPath"]
-position = Vector2(1239, 19)
-rotation = 1.5708
-rotates = false
+position = Vector2(35, 176)
 
 [node name="HUD" parent="." instance=ExtResource("6_uanhh")]
 
@@ -58,8 +49,15 @@ position = Vector2(-171, 371)
 collision_mask = 6
 
 [node name="BaseCollisionShape2D" type="CollisionShape2D" parent="BaseArea"]
-position = Vector2(103, -51)
+position = Vector2(103, -185)
 shape = SubResource("RectangleShape2D_hy85n")
+
+[node name="EnemySpawnPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_wn1vu")
+
+[node name="EnemySpawnLocation" type="PathFollow2D" parent="EnemySpawnPath"]
+position = Vector2(651, 12)
+rotation = 1.5708
 
 [connection signal="timeout" from="EnemyOneSpawnTimer" to="." method="_on_enemy_one_spawn_timer_timeout"]
 [connection signal="timeout" from="StageTimer" to="." method="_on_stage_timer_timeout"]

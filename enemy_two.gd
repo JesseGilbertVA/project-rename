@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed = randf_range(350.0, 450.0)
+@export var speed = randf_range(225.0, 275.0)
 @onready var player = get_node("../Player") #Probably need to understand this a little bit better
 var player_position
 var target_position

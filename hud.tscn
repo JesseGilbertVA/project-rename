@@ -12,48 +12,57 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -40.0
-offset_top = -11.5
-offset_right = 40.0
-offset_bottom = 11.5
+offset_left = -120.0
+offset_top = -33.5
+offset_right = 120.0
+offset_bottom = 33.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 32
 text = "Get ready!"
+horizontal_alignment = 1
 
 [node name="Currency" type="Label" parent="."]
 top_level = true
-offset_left = 13.0
-offset_top = 568.0
-offset_right = 92.0
-offset_bottom = 591.0
+offset_left = 12.0
+offset_top = 311.0
+offset_right = 91.0
+offset_bottom = 334.0
+theme_override_font_sizes/font_size = 10
 text = "Currency: "
+metadata/_edit_use_anchors_ = true
 
 [node name="Health" type="Label" parent="."]
 top_level = true
-offset_left = 13.0
-offset_top = 601.0
-offset_right = 73.0
-offset_bottom = 624.0
+offset_left = 12.0
+offset_top = 327.0
+offset_right = 72.0
+offset_bottom = 350.0
+theme_override_font_sizes/font_size = 10
 text = "Health: "
+metadata/_edit_use_anchors_ = true
 
 [node name="GetReadyTimer" type="Timer" parent="."]
 wait_time = 2.0
 
 [node name="TimeRemaining" type="Label" parent="."]
 top_level = true
-offset_left = 932.0
-offset_top = 600.0
-offset_right = 1065.0
-offset_bottom = 623.0
+offset_left = 507.0
+offset_top = 330.0
+offset_right = 640.0
+offset_bottom = 353.0
+theme_override_font_sizes/font_size = 10
 text = "Time Remaining: "
+metadata/_edit_use_anchors_ = true
 
 [node name="CurrentStage" type="Label" parent="."]
 top_level = true
-offset_left = 932.0
-offset_top = 578.0
-offset_right = 1065.0
-offset_bottom = 601.0
+offset_left = 507.0
+offset_top = 316.0
+offset_right = 640.0
+offset_bottom = 339.0
+theme_override_font_sizes/font_size = 10
 text = "Current Stage: "
+metadata/_edit_use_anchors_ = true
 
 [connection signal="timeout" from="GetReadyTimer" to="." method="_on_get_ready_timer_timeout"]

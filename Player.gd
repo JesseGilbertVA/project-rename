@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var speed = 300
+@export var speed = globals.player_move_speed
 @export var Bullet : PackedScene
 @export var TriLaser : PackedScene
 var screen_size
@@ -34,8 +34,8 @@ func _process(delta):
 	#I have no idea what I am doing
 	velocity = velocity.normalized() * speed
 	position += velocity * delta
-	position.x = clamp(position.x, 50, screen_size.x - 50)
-	position.y = clamp(position.y, 30, screen_size.y - 30) #I DONT KNOW IF THIS IS THE BEST WAY TO HANDLE THIS KEEP IT IN MIND IF I NEED TO FIX IT
+	position.x = clamp(position.x, 25, screen_size.x - 25)
+	position.y = clamp(position.y, 11, screen_size.y - 13) #I DONT KNOW IF THIS IS THE BEST WAY TO HANDLE THIS KEEP IT IN MIND IF I NEED TO FIX IT
 	#position = position.clamp(Vector2.ZERO, screen_size) #SAVING THIS OLD LINE JUST IN CASE
 	
 	match globals.weapon_type:
@@ -59,6 +59,7 @@ func _on_body_entered(body):
 		body.queue_free()
 	else:
 		print('player hit')
+		$AnimatedSprite2D.play("hit")
 		player_hit.emit()
 		globals.player_health -= 1
 		body.queue_free()
@@ -66,7 +67,7 @@ func _on_body_entered(body):
 # lowercase b is a fucking horrible name for this variable, but basically all we are doing is declaring that as the bullet we are creating
 func basic_shoot():
 	var b = Bullet.instantiate()
-	owner.add_child(b) #the owner tag is crucial here so that it attaches to the main scene node and not the player node
+	owner.add_child(b) #the owner tsdag is crucial here so that it attaches to the main scene node and not the player node
 	b.transform = $LaserSpawn.global_transform
 	
 func triple_shoot():

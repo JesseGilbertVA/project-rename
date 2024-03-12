@@ -23,7 +23,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ibqwj"]
-size = Vector2(119, 85)
+size = Vector2(61, 44)
 
 [node name="EnemyOne" type="RigidBody2D" groups=["enemies"]]
 collision_layer = 4
@@ -32,12 +32,12 @@ script = ExtResource("1_4eu2d")
 metadata/_edit_group_ = true
 
 [node name="EnemyOneAnimatedSprite" type="AnimatedSprite2D" parent="." groups=["enemies"]]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_52tkt")
 animation = &"death"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemies"]]
-position = Vector2(2.5, 1.5)
+position = Vector2(1.5, 1)
 shape = SubResource("RectangleShape2D_ibqwj")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." groups=["enemies"]]

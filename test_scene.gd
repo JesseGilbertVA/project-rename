@@ -3,6 +3,7 @@ extends Node
 @export var enemy_one: PackedScene
 @export var asteroid_scene: PackedScene
 @export var enemy_two_scene: PackedScene
+@export var green_enenmy: PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,7 +24,7 @@ func _on_enemy_one_spawn_timer_timeout():
 	enemy_spawn_location.progress_ratio = randf()
 	var direction = enemy_spawn_location.rotation + PI / 2 #I still don't really understand radians fully, but this worked so?
 	enemy.position = enemy_spawn_location.position
-	var velocity = Vector2(randf_range(450.0, 550.0), 0.0) #speed up for medium stage
+	var velocity = Vector2(randf_range(325.0, 325.0), 0.0) #speed up for medium stage
 	enemy.linear_velocity = velocity.rotated(direction) #I dont even know what this line does fully, but it makes the bad guys move forward so
 	add_child(enemy)
 
@@ -38,6 +39,7 @@ func _on_start_timer_timeout():
 	$StageTimer.start()
 	$AsteroidTimer.start()
 	$EnemyTwoSpawnTimer.start()
+	$GreenEnemyTimer.start()
 
 
 func _on_stage_timer_timeout():
@@ -48,6 +50,7 @@ func _on_stage_timer_timeout():
 	get_tree().change_scene_to_file("res://store.tscn")
 	
 func game_over():
+	$Player.hide()
 	get_tree().paused = true
 	$HUD/GetReady.text = "Game over! You lose!"
 	await get_tree().create_timer(3.0).timeout
@@ -62,13 +65,13 @@ func _on_base_area_body_entered(body):
 
 func _on_asteroid_timer_timeout():
 	var i = 0
-	while i < 2:
+	while i < 1:
 		var asteroid = asteroid_scene.instantiate()
 		var asteroid_spawn_location = $EnemySpawnPath/EnemySpawnLocation
 		asteroid_spawn_location.progress_ratio = randf()
 		var direction = asteroid_spawn_location.rotation + PI / 2 #I still don't really understand radians fully, but this worked so?
 		asteroid.position = asteroid_spawn_location.position
-		var velocity = Vector2(1250.0, 0.0)
+		var velocity = Vector2(900.0, 0.0)
 		asteroid.linear_velocity = velocity.rotated(direction) #I dont even know what this line does fully, but it makes the bad guys move forward so
 		add_child(asteroid)
 		i += 1
@@ -82,3 +85,14 @@ func _on_enemy_two_spawn_timer_timeout():
 	var direction = enemy_two_spawn_location.rotation + PI / 2
 	enemy_two.position = enemy_two_spawn_location.position
 	add_child(enemy_two)
+
+
+func _on_green_enemy_timer_timeout():
+	var enemy = green_enenmy.instantiate()
+	var enemy_spawn_location = $EnemySpawnPath/EnemySpawnLocation
+	enemy_spawn_location.progress_ratio = randf()
+	var direction = enemy_spawn_location.rotation + PI / 2 #I still don't really understand radians fully, but this worked so?
+	enemy.position = enemy_spawn_location.position
+	var velocity = Vector2(randf_range(200.0, 200.0), 0.0) #speed up for medium stage
+	enemy.linear_velocity = velocity.rotated(direction) #I dont even know what this line does fully, but it makes the bad guys move forward so
+	add_child(enemy)

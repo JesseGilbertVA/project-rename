@@ -23,13 +23,14 @@ text = "Start Game"
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -110.0
-offset_top = 166.0
-offset_right = 111.0
-offset_bottom = 189.0
+offset_left = -83.0
+offset_top = 77.0
+offset_right = 83.0
+offset_bottom = 94.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 12
 text = "Omega Starship Alpha Strike"
+horizontal_alignment = 1
 
 [node name="ExitGame" type="Button" parent="."]
 anchors_preset = 8

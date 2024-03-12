@@ -9,6 +9,8 @@ func _ready():
 	globals.player_currency = 0
 	globals.max_player_health = 3
 	globals.weapon_type = 1
+	globals.player_move_speed = 150
+	globals.player_shield = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

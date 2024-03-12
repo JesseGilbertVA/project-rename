@@ -6,10 +6,11 @@
 script = ExtResource("1_6e33r")
 
 [node name="IncreaseMaxHP" type="Button" parent="."]
-offset_left = 16.0
-offset_top = 187.0
-offset_right = 203.0
-offset_bottom = 241.0
+offset_left = 24.0
+offset_top = 92.0
+offset_right = 211.0
+offset_bottom = 146.0
+scale = Vector2(0.5, 0.5)
 text = "Increase Max Health
 Cost: 2000"
 
@@ -19,10 +20,11 @@ anchor_left = -0.909
 anchor_top = -1.902
 anchor_right = -0.909
 anchor_bottom = -1.902
-offset_left = 2061.17
-offset_top = 1818.5
-offset_right = 2177.17
-offset_bottom = 1859.5
+offset_left = 1147.76
+offset_top = 1011.72
+offset_right = 1263.76
+offset_bottom = 1052.72
+scale = Vector2(0.5, 0.5)
 text = "Next Stage"
 
 [node name="StoreLabel" type="Label" parent="."]
@@ -37,50 +39,79 @@ theme_override_font_sizes/font_size = 32
 text = "Welcome to the shop"
 
 [node name="DeathToAll" type="Button" parent="."]
-offset_left = 16.0
-offset_top = 115.0
-offset_right = 203.0
-offset_bottom = 169.0
+offset_left = 24.0
+offset_top = 55.0
+offset_right = 211.0
+offset_bottom = 109.0
+scale = Vector2(0.5, 0.5)
 text = "Death To All Who Enter
 Cost: 15000"
 
 [node name="RestoreHP" type="Button" parent="."]
-offset_left = 16.0
-offset_top = 259.0
-offset_right = 203.0
-offset_bottom = 313.0
+offset_left = 24.0
+offset_top = 127.0
+offset_right = 211.0
+offset_bottom = 181.0
+scale = Vector2(0.5, 0.5)
 text = "Restore HP
 Cost: 500"
 
 [node name="Currency" type="Label" parent="."]
-offset_left = 13.0
-offset_top = 568.0
-offset_right = 92.0
-offset_bottom = 591.0
+offset_left = 25.0
+offset_top = 319.0
+offset_right = 104.0
+offset_bottom = 342.0
+theme_override_font_sizes/font_size = 10
 text = "Currency: "
 
 [node name="Health" type="Label" parent="."]
-offset_left = 13.0
-offset_top = 601.0
-offset_right = 73.0
-offset_bottom = 624.0
+offset_left = 25.0
+offset_top = 336.0
+offset_right = 85.0
+offset_bottom = 359.0
+theme_override_font_sizes/font_size = 10
 text = "Health: "
 
 [node name="TriLaser" type="Button" parent="."]
-offset_left = 16.0
-offset_top = 334.0
-offset_right = 203.0
-offset_bottom = 388.0
+offset_left = 24.0
+offset_top = 163.0
+offset_right = 211.0
+offset_bottom = 217.0
+scale = Vector2(0.5, 0.5)
 text = "Tri Laser
 Cost: 3333"
 
 [node name="PlayerShield" type="Button" parent="."]
-offset_left = 16.0
-offset_top = 404.0
-offset_right = 203.0
-offset_bottom = 458.0
+offset_left = 24.0
+offset_top = 195.0
+offset_right = 211.0
+offset_bottom = 249.0
+scale = Vector2(0.5, 0.5)
 text = "Shield
 Cost: 1000"
+
+[node name="IncreasePlayerSpeed" type="Button" parent="."]
+offset_left = 24.0
+offset_top = 228.0
+offset_right = 211.0
+offset_bottom = 282.0
+scale = Vector2(0.5, 0.5)
+text = "Increase Ship Speed
+Cost: 250"
+
+[node name="PurchaseText" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 1
 
 [connection signal="pressed" from="IncreaseMaxHP" to="." method="_on_increase_max_hp_pressed"]
 [connection signal="pressed" from="NextStage" to="." method="_on_next_stage_pressed"]
@@ -88,3 +119,4 @@ Cost: 1000"
 [connection signal="pressed" from="RestoreHP" to="." method="_on_restore_hp_pressed"]
 [connection signal="pressed" from="TriLaser" to="." method="_on_tri_laser_pressed"]
 [connection signal="pressed" from="PlayerShield" to="." method="_on_player_shield_pressed"]
+[connection signal="pressed" from="IncreasePlayerSpeed" to="." method="_on_increase_player_speed_pressed"]

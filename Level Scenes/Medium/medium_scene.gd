@@ -23,7 +23,7 @@ func _on_enemy_one_spawn_timer_timeout():
 	enemy_spawn_location.progress_ratio = randf()
 	var direction = enemy_spawn_location.rotation + PI / 2 #I still don't really understand radians fully, but this worked so?
 	enemy.position = enemy_spawn_location.position
-	var velocity = Vector2(randf_range(450.0, 550.0), 0.0) #speed up for medium stage
+	var velocity = Vector2(randf_range(275.0, 325.0), 0.0) #speed up for medium stage
 	enemy.linear_velocity = velocity.rotated(direction) #I dont even know what this line does fully, but it makes the bad guys move forward so
 	add_child(enemy)
 
@@ -44,6 +44,7 @@ func _on_stage_timer_timeout():
 	get_tree().change_scene_to_file("res://store.tscn")
 	
 func game_over():
+	$Player.hide()
 	get_tree().paused = true
 	$HUD/GetReady.text = "Game over! You lose!"
 	await get_tree().create_timer(3.0).timeout
@@ -64,7 +65,7 @@ func _on_asteroid_timer_timeout():
 		asteroid_spawn_location.progress_ratio = randf()
 		var direction = asteroid_spawn_location.rotation + PI / 2 #I still don't really understand radians fully, but this worked so?
 		asteroid.position = asteroid_spawn_location.position
-		var velocity = Vector2(1250.0, 0.0)
+		var velocity = Vector2(625.0, 0.0)
 		asteroid.linear_velocity = velocity.rotated(direction) #I dont even know what this line does fully, but it makes the bad guys move forward so
 		add_child(asteroid)
 		i += 1
