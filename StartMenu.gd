@@ -8,7 +8,7 @@ func _ready():
 	globals.stage_level = 1
 	globals.player_currency = 0
 	globals.max_player_health = 3
-	globals.death_to_all = false
+	globals.weapon_type = 1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

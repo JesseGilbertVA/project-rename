@@ -8,7 +8,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$Health.text = "Health: " + str(globals.player_health)
+	$Health.text = "Health: " + str(globals.player_health) + " / " + str(globals.max_player_health)
 	$Currency.text = "Currency: " + str(globals.player_currency)
 	$CurrentStage.text = "Current Stage: " + str(globals.stage_level)
 

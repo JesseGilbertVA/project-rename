@@ -1,16 +1,20 @@
 extends Area2D
 
-@export var speed = 400
+@export var speed = 300
 @export var Bullet : PackedScene
 @export var TriLaser : PackedScene
 var screen_size
 var cooldown = 0.3
+var shield_active = false
 
 signal player_hit
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
+	if globals.player_shield == true:
+		shield_active = true
+		$ShieldSprite.show()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -30,7 +34,7 @@ func _process(delta):
 	#I have no idea what I am doing
 	velocity = velocity.normalized() * speed
 	position += velocity * delta
-	position.x = clamp(position.x, 30, screen_size.x - 30)
+	position.x = clamp(position.x, 50, screen_size.x - 50)
 	position.y = clamp(position.y, 30, screen_size.y - 30) #I DONT KNOW IF THIS IS THE BEST WAY TO HANDLE THIS KEEP IT IN MIND IF I NEED TO FIX IT
 	#position = position.clamp(Vector2.ZERO, screen_size) #SAVING THIS OLD LINE JUST IN CASE
 	
@@ -42,17 +46,22 @@ func _process(delta):
 		2: #tri laser
 			if Input.is_action_pressed("shoot") and cooldown <= 0:
 				triple_shoot()
-				cooldown = 0.3
+				cooldown = 0.5
 		3: #death to all who enter laser
 			if Input.is_action_pressed("shoot"):
 				basic_shoot()
 	
 
 func _on_body_entered(body):
-	print('player hit')
-	player_hit.emit()
-	globals.player_health -= 1
-	body.queue_free()
+	if shield_active == true:
+		$ShieldSprite.hide()
+		shield_active = false
+		body.queue_free()
+	else:
+		print('player hit')
+		player_hit.emit()
+		globals.player_health -= 1
+		body.queue_free()
 
 # lowercase b is a fucking horrible name for this variable, but basically all we are doing is declaring that as the bullet we are creating
 func basic_shoot():
