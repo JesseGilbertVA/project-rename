@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://Level Scenes/Easy/easy_scene.gd" id="1_ialwv"]
 [ext_resource type="PackedScene" uid="uid://cqnnho8sfmjo4" path="res://enemy_two.tscn" id="2_17ecj"]
 [ext_resource type="PackedScene" uid="uid://bdtp2suf5do83" path="res://enemy_one.tscn" id="2_trp6e"]
-[ext_resource type="Texture2D" uid="uid://xapwdfhdsfsb" path="res://background_glacial_mountains.png" id="4_0ntm5"]
 [ext_resource type="PackedScene" uid="uid://ofgyhkajy7qp" path="res://player.tscn" id="4_a10k1"]
+[ext_resource type="Texture2D" uid="uid://cavxi0xprph6l" path="res://Backgrounds/nebula_one.png" id="4_mtqai"]
 [ext_resource type="PackedScene" uid="uid://co58fv0qwjltu" path="res://hud.tscn" id="6_puth4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hy85n"]
@@ -24,12 +24,15 @@ enemy_two_scene = ExtResource("2_trp6e")
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2(1440, 2.08165e-12)
+motion_mirroring = Vector2(640, 2.08165e-12)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(320.5, 179.5)
-scale = Vector2(1, 0.99)
-texture = ExtResource("4_0ntm5")
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
+offset_right = 640.0
+offset_bottom = 360.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_mtqai")
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Player" parent="." instance=ExtResource("4_a10k1")]
 position = Vector2(33, 193)

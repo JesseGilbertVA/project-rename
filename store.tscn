@@ -12,7 +12,7 @@ offset_right = 211.0
 offset_bottom = 146.0
 scale = Vector2(0.5, 0.5)
 text = "Increase Max Health
-Cost: 2000"
+Cost: 1000"
 
 [node name="NextStage" type="Button" parent="."]
 anchors_preset = -1
@@ -45,7 +45,7 @@ offset_right = 211.0
 offset_bottom = 109.0
 scale = Vector2(0.5, 0.5)
 text = "Death To All Who Enter
-Cost: 15000"
+Cost: 10000"
 
 [node name="RestoreHP" type="Button" parent="."]
 offset_left = 24.0
@@ -54,7 +54,7 @@ offset_right = 211.0
 offset_bottom = 181.0
 scale = Vector2(0.5, 0.5)
 text = "Restore HP
-Cost: 500"
+Cost: 250"
 
 [node name="Currency" type="Label" parent="."]
 offset_left = 25.0
@@ -79,7 +79,7 @@ offset_right = 211.0
 offset_bottom = 217.0
 scale = Vector2(0.5, 0.5)
 text = "Tri Laser
-Cost: 3333"
+Cost: 1250"
 
 [node name="PlayerShield" type="Button" parent="."]
 offset_left = 24.0

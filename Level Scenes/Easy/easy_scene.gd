@@ -2,6 +2,7 @@ extends Node
 
 @export var enemy_one: PackedScene
 @export var enemy_two_scene: PackedScene
+var scroll_x = 0 #background varibale
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,6 +14,8 @@ func _process(delta):
 	$HUD.update_timer(round($StageTimer.get_time_left()))
 	if globals.player_health <= 0:
 		game_over()
+	scroll_x -= 10 * delta
+	$ParallaxBackground.scroll_offset.x = scroll_x
 
 func game_over():
 	$Player.hide()

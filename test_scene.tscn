@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://brfago4fxe7fp"]
+[gd_scene load_steps=11 format=3 uid="uid://brfago4fxe7fp"]
 
 [ext_resource type="PackedScene" uid="uid://ofgyhkajy7qp" path="res://player.tscn" id="1_i5sts"]
 [ext_resource type="Script" path="res://test_scene.gd" id="1_j5fym"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bdtp2suf5do83" path="res://enemy_one.tscn" id="2_vt0f1"]
 [ext_resource type="PackedScene" uid="uid://coclpmmj4jpro" path="res://asteroid.tscn" id="3_k2qyb"]
 [ext_resource type="PackedScene" uid="uid://co58fv0qwjltu" path="res://hud.tscn" id="4_dnlo1"]
+[ext_resource type="Texture2D" uid="uid://cavxi0xprph6l" path="res://Backgrounds/nebula_one.png" id="6_ryi1y"]
 [ext_resource type="PackedScene" uid="uid://cqnnho8sfmjo4" path="res://enemy_two.tscn" id="6_x88bc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hy85n"]
@@ -24,15 +25,21 @@ asteroid_scene = ExtResource("3_k2qyb")
 enemy_two_scene = ExtResource("6_x88bc")
 green_enenmy = ExtResource("2_bclyy")
 
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(640, 2.08165e-12)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
+offset_right = 640.0
+offset_bottom = 360.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_ryi1y")
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true
+
 [node name="Player" parent="." instance=ExtResource("1_i5sts")]
 position = Vector2(31, 172)
-
-[node name="Button" type="Button" parent="."]
-offset_left = 788.0
-offset_top = 601.0
-offset_right = 902.0
-offset_bottom = 632.0
-text = "Head to Store"
 
 [node name="HUD" parent="." instance=ExtResource("4_dnlo1")]
 
@@ -71,7 +78,6 @@ curve = SubResource("Curve2D_qn8j5")
 position = Vector2(651, 12)
 rotation = 1.5708
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="timeout" from="EnemyOneSpawnTimer" to="." method="_on_enemy_one_spawn_timer_timeout"]
 [connection signal="timeout" from="StageTimer" to="." method="_on_stage_timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]

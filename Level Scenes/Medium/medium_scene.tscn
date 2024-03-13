@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://djllt5yunlln8"]
+[gd_scene load_steps=10 format=3 uid="uid://djllt5yunlln8"]
 
 [ext_resource type="Script" path="res://Level Scenes/Medium/medium_scene.gd" id="1_mjjqo"]
 [ext_resource type="PackedScene" uid="uid://bdtp2suf5do83" path="res://enemy_one.tscn" id="2_dphe3"]
 [ext_resource type="PackedScene" uid="uid://coclpmmj4jpro" path="res://asteroid.tscn" id="3_ije6b"]
 [ext_resource type="PackedScene" uid="uid://cqnnho8sfmjo4" path="res://enemy_two.tscn" id="4_m84gf"]
+[ext_resource type="Texture2D" uid="uid://cavxi0xprph6l" path="res://Backgrounds/nebula_one.png" id="5_dov0g"]
 [ext_resource type="PackedScene" uid="uid://ofgyhkajy7qp" path="res://player.tscn" id="5_pf52t"]
 [ext_resource type="PackedScene" uid="uid://co58fv0qwjltu" path="res://hud.tscn" id="6_uanhh"]
 
@@ -21,6 +22,19 @@ script = ExtResource("1_mjjqo")
 enemy_one = ExtResource("2_dphe3")
 asteroid_scene = ExtResource("3_ije6b")
 enemy_two_scene = ExtResource("4_m84gf")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(640, 2.08165e-12)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
+offset_right = 640.0
+offset_bottom = 360.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_dov0g")
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Player" parent="." instance=ExtResource("5_pf52t")]
 position = Vector2(35, 176)

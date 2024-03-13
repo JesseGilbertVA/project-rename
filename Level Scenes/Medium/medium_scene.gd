@@ -4,6 +4,8 @@ extends Node
 @export var asteroid_scene: PackedScene
 @export var enemy_two_scene: PackedScene
 
+var scroll_x = 0#background variable
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$StartTimer.start()
@@ -14,6 +16,8 @@ func _process(delta):
 	$HUD.update_timer(round($StageTimer.get_time_left()))
 	if globals.player_health <= 0:
 		game_over()
+	scroll_x -= 10 * delta
+	$ParallaxBackground.scroll_offset.x = scroll_x
 
 
 #probably need to change variable name from enemy to something a little more specific

@@ -26,9 +26,9 @@ func _on_next_stage_pressed():
 
 
 func _on_death_to_all_pressed():
-	if globals.player_currency >= 15000 and globals.weapon_type != 3:
+	if globals.player_currency >= 10000 and globals.weapon_type != 3:
 		globals.weapon_type = 3
-		globals.player_currency -= 15000
+		globals.player_currency -= 10000
 		$PurchaseText.text = "What have you become..."
 	elif globals.weapon_type == 3:
 		$PurchaseText.text = "You are already a monster."
@@ -38,9 +38,9 @@ func _on_death_to_all_pressed():
 	
 
 func _on_increase_max_hp_pressed():
-	if globals.player_currency >= 2000:
+	if globals.player_currency >= 1000:
 		globals.max_player_health += 1
-		globals.player_currency -= 2000
+		globals.player_currency -= 1000
 		globals.player_health = globals.max_player_health
 		$PurchaseText.text = "Max HP increased."
 	else:
@@ -48,9 +48,9 @@ func _on_increase_max_hp_pressed():
 
 
 func _on_restore_hp_pressed():
-	if globals.player_currency >= 500 and globals.player_health < globals.max_player_health:
+	if globals.player_currency >= 250 and globals.player_health < globals.max_player_health:
 		globals.player_health += 1
-		globals.player_currency -= 500
+		globals.player_currency -= 250
 	if globals.player_health == globals.max_player_health:
 		$PurchaseText.text = "HP is full."
 	else:
@@ -58,9 +58,9 @@ func _on_restore_hp_pressed():
 
 
 func _on_tri_laser_pressed():
-	if globals.player_currency >= 3333 and globals.weapon_type != 2:
+	if globals.player_currency >= 1250 and globals.weapon_type != 2:
 		globals.weapon_type = 2
-		globals.player_currency -= 3333
+		globals.player_currency -= 1250
 		$PurchaseText.text = "Like a shotgun but better."
 	elif globals.weapon_type == 2:
 		$PurchaseText.text = "You already own that though?"

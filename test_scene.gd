@@ -5,6 +5,8 @@ extends Node
 @export var enemy_two_scene: PackedScene
 @export var green_enenmy: PackedScene
 
+var scroll_x = 0 #background variable
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$StartTimer.start()
@@ -15,6 +17,8 @@ func _process(delta):
 	$HUD.update_timer(round($StageTimer.get_time_left()))
 	if globals.player_health <= 0:
 		game_over()
+	scroll_x -= 10 * delta
+	$ParallaxBackground.scroll_offset.x = scroll_x
 
 
 #probably need to change variable name from enemy to something a little more specific
@@ -27,11 +31,6 @@ func _on_enemy_one_spawn_timer_timeout():
 	var velocity = Vector2(randf_range(325.0, 325.0), 0.0) #speed up for medium stage
 	enemy.linear_velocity = velocity.rotated(direction) #I dont even know what this line does fully, but it makes the bad guys move forward so
 	add_child(enemy)
-
-
-func _on_button_pressed():
-	print("Heading to store")
-	get_tree().change_scene_to_file("res://store.tscn")
 
 
 func _on_start_timer_timeout():
