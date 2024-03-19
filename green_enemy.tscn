@@ -1,14 +1,14 @@
 [gd_scene load_steps=6 format=3 uid="uid://5a1yuyr6kcpr"]
 
 [ext_resource type="Script" path="res://green_enemy.gd" id="1_46d5p"]
-[ext_resource type="Texture2D" uid="uid://b2jk0ad5kwlvv" path="res://green_enemy.png" id="1_utxv3"]
+[ext_resource type="Texture2D" uid="uid://de1ee4neyfcdx" path="res://straight_enemy2.png" id="2_b7oiy"]
 [ext_resource type="Texture2D" uid="uid://bg2q1w756f6rf" path="res://player_invis.png" id="2_nf8pc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_751i2"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_utxv3")
+"texture": ExtResource("2_b7oiy")
 }],
 "loop": true,
 "name": &"default",
@@ -16,25 +16,25 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_utxv3")
+"texture": ExtResource("2_b7oiy")
 }, {
 "duration": 1.0,
 "texture": ExtResource("2_nf8pc")
 }, {
 "duration": 1.0,
-"texture": ExtResource("1_utxv3")
+"texture": ExtResource("2_b7oiy")
 }, {
 "duration": 1.0,
 "texture": ExtResource("2_nf8pc")
 }, {
 "duration": 1.0,
-"texture": ExtResource("1_utxv3")
+"texture": ExtResource("2_b7oiy")
 }, {
 "duration": 1.0,
 "texture": ExtResource("2_nf8pc")
 }, {
 "duration": 1.0,
-"texture": ExtResource("1_utxv3")
+"texture": ExtResource("2_b7oiy")
 }],
 "loop": false,
 "name": &"hit",
@@ -42,7 +42,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_igi2d"]
-size = Vector2(60.5, 44)
+size = Vector2(59.25, 38)
 
 [node name="GreenEnemy" type="RigidBody2D" groups=["enemies"]]
 collision_layer = 4
@@ -52,13 +52,9 @@ script = ExtResource("1_46d5p")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_751i2")
-animation = &"hit"
-frame = 6
-frame_progress = 1.0
-flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.25, 1)
+position = Vector2(-0.375, 7)
 shape = SubResource("RectangleShape2D_igi2d")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
