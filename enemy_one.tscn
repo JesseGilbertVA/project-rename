@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://bdtp2suf5do83"]
 
 [ext_resource type="Script" path="res://enemy_one.gd" id="1_4eu2d"]
-[ext_resource type="Texture2D" uid="uid://c2c31kf8ydhp" path="res://newEnemyOne.png" id="2_1s7tw"]
+[ext_resource type="Texture2D" uid="uid://nmcpdl0r706v" path="res://test_ship.png" id="2_vvpa3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_52tkt"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_1s7tw")
+"texture": ExtResource("2_vvpa3")
 }],
 "loop": true,
 "name": &"alive",
@@ -15,7 +15,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_1s7tw")
+"texture": ExtResource("2_vvpa3")
 }],
 "loop": false,
 "name": &"death",
@@ -23,7 +23,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ibqwj"]
-size = Vector2(61, 44)
+size = Vector2(58.5, 38)
 
 [node name="EnemyOne" type="RigidBody2D" groups=["enemies"]]
 collision_layer = 4
@@ -37,7 +37,7 @@ sprite_frames = SubResource("SpriteFrames_52tkt")
 animation = &"death"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemies"]]
-position = Vector2(1.5, 1)
+position = Vector2(-1.25, 7)
 shape = SubResource("RectangleShape2D_ibqwj")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." groups=["enemies"]]

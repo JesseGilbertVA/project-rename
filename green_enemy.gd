@@ -17,7 +17,7 @@ func hit_by_laser():
 		linear_velocity = Vector2.ZERO
 		$CollisionShape2D.set_deferred("disabled", true)
 		#await get_tree().create_timer(0.25).timeout #re-enable once we actually have an animation
-		globals.player_currency += 10
+		globals.player_currency += 20
 		print('Player currency: ' + str(globals.player_currency))
 		queue_free()
 	else:

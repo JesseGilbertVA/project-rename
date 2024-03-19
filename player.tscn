@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Player.gd" id="1_eiyoc"]
 [ext_resource type="PackedScene" uid="uid://c8gqagxs6ltvt" path="res://player_laser.tscn" id="2_ga1q8"]
 [ext_resource type="Texture2D" uid="uid://hr3r7bsaoiqv" path="res://laser.png" id="3_bpi42"]
-[ext_resource type="Texture2D" uid="uid://daeeix3q1oqoy" path="res://player_temp.png" id="4_uqc4n"]
+[ext_resource type="Texture2D" uid="uid://dl25rdyoptbsl" path="res://player_recolor.png" id="4_5eile"]
 [ext_resource type="Texture2D" uid="uid://bg2q1w756f6rf" path="res://player_invis.png" id="5_g136m"]
 [ext_resource type="Texture2D" uid="uid://b6enf34l2l5fi" path="res://player_shield.png" id="5_tplfh"]
 
@@ -54,7 +54,7 @@ _bundled = {
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_uqc4n")
+"texture": ExtResource("4_5eile")
 }],
 "loop": true,
 "name": &"default",
@@ -62,25 +62,25 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_uqc4n")
+"texture": ExtResource("4_5eile")
 }, {
 "duration": 1.0,
 "texture": ExtResource("5_g136m")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_uqc4n")
+"texture": ExtResource("4_5eile")
 }, {
 "duration": 1.0,
 "texture": ExtResource("5_g136m")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_uqc4n")
+"texture": ExtResource("4_5eile")
 }, {
 "duration": 1.0,
 "texture": ExtResource("5_g136m")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_uqc4n")
+"texture": ExtResource("4_5eile")
 }],
 "loop": false,
 "name": &"hit",

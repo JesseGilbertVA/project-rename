@@ -51,7 +51,8 @@ func _on_restore_hp_pressed():
 	if globals.player_currency >= 250 and globals.player_health < globals.max_player_health:
 		globals.player_health += 1
 		globals.player_currency -= 250
-	if globals.player_health == globals.max_player_health:
+		$PurchaseText.text = "HP recovered by 1. You now have " + str(globals.player_health) + " HP."
+	elif globals.player_health == globals.max_player_health:
 		$PurchaseText.text = "HP is full."
 	else:
 		$PurchaseText.text = "Insufficient funds."
