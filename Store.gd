@@ -84,11 +84,11 @@ func _on_increase_player_speed_pressed():
 	if globals.player_currency >= 250 and globals.player_move_speed == 150:
 		globals.player_move_speed += 50
 		globals.player_currency -= 250
-		$PurchaseText.text = "You can upgrade you're speed two more times."
+		$PurchaseText.text = "You can upgrade your speed two more times."
 	elif globals.player_currency >= 250 and globals.player_move_speed == 200:
 		globals.player_move_speed += 50
 		globals.player_currency -= 250
-		$PurchaseText.text = "You can upgrade you're speed one more time."
+		$PurchaseText.text = "You can upgrade your speed one more time."
 	elif globals.player_currency >= 250 and globals.player_move_speed == 250:
 		globals.player_move_speed += 50
 		globals.player_currency -= 250

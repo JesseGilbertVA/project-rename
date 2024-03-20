@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bdtp2suf5do83" path="res://enemy_one.tscn" id="2_vt0f1"]
 [ext_resource type="PackedScene" uid="uid://coclpmmj4jpro" path="res://asteroid.tscn" id="3_k2qyb"]
 [ext_resource type="PackedScene" uid="uid://co58fv0qwjltu" path="res://hud.tscn" id="4_dnlo1"]
-[ext_resource type="Texture2D" uid="uid://cavxi0xprph6l" path="res://Backgrounds/nebula_one.png" id="6_ryi1y"]
+[ext_resource type="Texture2D" uid="uid://ch65jstyope08" path="res://Backgrounds/big_planet.png" id="6_x8nup"]
 [ext_resource type="PackedScene" uid="uid://cqnnho8sfmjo4" path="res://enemy_two.tscn" id="6_x88bc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hy85n"]
@@ -28,13 +28,13 @@ green_enenmy = ExtResource("2_bclyy")
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2(640, 2.08165e-12)
+motion_mirroring = Vector2(1280, 2.08165e-12)
 
 [node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
 offset_right = 640.0
 offset_bottom = 360.0
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("6_ryi1y")
+texture = ExtResource("6_x8nup")
 stretch_mode = 1
 metadata/_edit_use_anchors_ = true
 

@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://bdtp2suf5do83" path="res://enemy_one.tscn" id="2_dphe3"]
 [ext_resource type="PackedScene" uid="uid://coclpmmj4jpro" path="res://asteroid.tscn" id="3_ije6b"]
 [ext_resource type="PackedScene" uid="uid://cqnnho8sfmjo4" path="res://enemy_two.tscn" id="4_m84gf"]
-[ext_resource type="Texture2D" uid="uid://cavxi0xprph6l" path="res://Backgrounds/nebula_one.png" id="5_dov0g"]
 [ext_resource type="PackedScene" uid="uid://ofgyhkajy7qp" path="res://player.tscn" id="5_pf52t"]
+[ext_resource type="Texture2D" uid="uid://dwlch8e0c7iup" path="res://Backgrounds/deep_space.png" id="5_yvwg3"]
 [ext_resource type="PackedScene" uid="uid://co58fv0qwjltu" path="res://hud.tscn" id="6_uanhh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hy85n"]
@@ -32,7 +32,7 @@ motion_mirroring = Vector2(640, 2.08165e-12)
 offset_right = 640.0
 offset_bottom = 360.0
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("5_dov0g")
+texture = ExtResource("5_yvwg3")
 stretch_mode = 1
 metadata/_edit_use_anchors_ = true
 
