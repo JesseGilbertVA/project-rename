@@ -20,7 +20,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var velocity = Vector2.ZERO
-	cooldown -= delta
+	cooldown -= delta #VITAL bit of code for cooldowns
 	#Player input, no rotation allowed
 	if Input.is_action_pressed('move_up'):
 		velocity.y -= 1
